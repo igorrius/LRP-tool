@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+
+# All files instead csv
+*
+!*.csv
+!.gitignore
+!/README.md
