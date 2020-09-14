@@ -11,14 +11,15 @@ var (
 )
 
 type (
-	VideoResolution = string
-	VideoSourceUrl  = string
+	VideoSourceUrl = string
 )
 
 type Entity struct {
-	Name   string
-	Link   string
-	Movies map[VideoResolution]VideoSourceUrl
+	Scope      string
+	Profession string
+	Title      string
+	Link       string
+	Movie      VideoSourceUrl
 }
 
 type Storager interface {
@@ -38,7 +39,7 @@ func NewStorage(ctx context.Context, options ...Option) *Storage {
 	s := &Storage{
 		ctx:      ctx,
 		logger:   log,
-		engines:  []Engine{newDummyEngine(log)},
+		engines:  []Engine{},
 		entities: make(chan *Entity, 8),
 	}
 
@@ -71,6 +72,11 @@ func (s *Storage) startStorageHandler() {
 	go func() {
 		<-s.ctx.Done()
 		close(s.entities)
+		for _, engine := range s.engines {
+			s.logger.FieldLogger().
+				WithField("engine", engine).
+				WithError(engine.Close()).Debugln("Close storage engine")
+		}
 	}()
 
 	for entity := range s.entities {

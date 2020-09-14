@@ -6,22 +6,22 @@ import (
 )
 
 type ConfigRow struct {
-	Courses        string `json:"courses" csv:"courses"`
-	Link           string `json:"link" csv:"link"`
-	OriginSite     string `json:"origin_site" csv:"origin_site"`
-	Specialization string `json:"specialization" csv:"specialization"`
-	Subscription   string `json:"subscription" csv:"subscription"`
-	Types          string `json:"types" csv:"types"`
+	Courses      string `json:"courses" csv:"courses"`
+	Link         string `json:"link" csv:"link"`
+	OriginSite   string `json:"origin_site" csv:"origin_site"`
+	Profession   string `json:"profession" csv:"profession"`
+	Subscription string `json:"subscription" csv:"subscription"`
+	Scope        string `json:"types" csv:"scope"`
 }
 
 func (r *ConfigRow) ToLogrusFields() logrus.Fields {
 	return logrus.Fields{
-		"courses":        r.Courses,
-		"link":           r.Link,
-		"origin_site":    r.OriginSite,
-		"specialization": r.Specialization,
-		"subscription":   r.Subscription,
-		"types":          r.Types,
+		"courses":      r.Courses,
+		"link":         r.Link,
+		"origin_site":  r.OriginSite,
+		"profession":   r.Profession,
+		"subscription": r.Subscription,
+		"scope":        r.Scope,
 	}
 }
 

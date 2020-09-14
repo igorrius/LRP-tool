@@ -52,25 +52,6 @@ type ByResolutionVideo struct {
 	} `json:"540p"`
 }
 
-type (
-	VideoResolution = string
-	VideoSourceUrl  = string
-)
-
-func (v ByResolutionVideo) ToMap() map[VideoResolution]VideoSourceUrl {
-	m := make(map[VideoResolution]VideoSourceUrl)
-	if v.R720P.Mp4VideoURL != "" {
-		m["720p"] = v.R720P.Mp4VideoURL
-	}
-	if v.R540P.Mp4VideoURL != "" {
-		m["540p"] = v.R540P.Mp4VideoURL
-	}
-	if v.R360P.Mp4VideoURL != "" {
-		m["360p"] = v.R360P.Mp4VideoURL
-	}
-	return m
-}
-
 type OnDemandLectureVideos struct {
 	Elements []struct {
 		ItemID   string `json:"itemId"`

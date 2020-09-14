@@ -22,6 +22,7 @@ func main() {
 			return nil
 		},
 		Commands: []*cli.Command{
+			cmd.Config(),
 			cmd.Parser(),
 		},
 		Flags: []cli.Flag{

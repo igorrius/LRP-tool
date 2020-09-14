@@ -1,26 +1,33 @@
 package storage
 
-import "github.com/choizydev/LRP-tool/internal/logger"
+import (
+	"context"
+	"github.com/choizydev/LRP-tool/internal/logger"
+)
 
-type dummyEngine struct {
+type DummyEngine struct {
 	log   *logger.Logger
 	count int
 }
 
-func newDummyEngine(log *logger.Logger) *dummyEngine {
-	return &dummyEngine{log: log}
+func NewDummyEngine(ctx context.Context) *DummyEngine {
+	return &DummyEngine{log: logger.FromContextOrNew(ctx)}
 }
 
-func (d *dummyEngine) Save(entity Entity) error {
+func (d *DummyEngine) Save(entity Entity) error {
 	d.count++
 	d.log.FieldLogger().
 		WithField("count", d.count).
 		WithField("entity", entity).
-		Debugln("dummyEngine.Save")
+		Debugln("DummyEngine.Save")
 
 	return nil
 }
 
-func (d *dummyEngine) String() string {
+func (d *DummyEngine) String() string {
 	return "Dummy engine"
+}
+
+func (d *DummyEngine) Close() error {
+	return nil
 }

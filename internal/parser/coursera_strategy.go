@@ -1,7 +1,6 @@
 package parser
 
 import (
-	"context"
 	"github.com/choizydev/LRP-tool/internal/logger"
 	"github.com/choizydev/LRP-tool/internal/parser/coursera"
 	"github.com/choizydev/LRP-tool/internal/project"
@@ -19,9 +18,9 @@ type CourseraStrategy struct {
 	client        *coursera.Client
 }
 
-func NewCourseraStrategy(ctx context.Context, log *logger.Logger, options *options) *CourseraStrategy {
+func NewCourseraStrategy(log *logger.Logger, options *options) *CourseraStrategy {
 	return &CourseraStrategy{
-		commonStrategy: newCommonStrategy(ctx, log, options),
+		commonStrategy: newCommonStrategy(log, options),
 		client:         coursera.NewClient(),
 	}
 }
@@ -35,14 +34,14 @@ func (s *CourseraStrategy) Name() string {
 	return "coursera.org"
 }
 
-func (s *CourseraStrategy) Run(row project.ConfigRow) error {
+func (s *CourseraStrategy) Run(configRow project.ConfigRow) error {
 	c := s.collector()
 
 	c.OnHTML("a[data-click-key=\"video_logged_out_page.video_lecture_landing_page.click.other_videos_link\"]", s.visitLinkHandler())
 	c.OnHTML("a[data-e2e=\"course-link\"]", s.visitLinkHandler())
-	c.OnHTML("a[data-click-key=\"xdp_v1.xdp.click.syllabus_item_link\"]", s.syllabusItemLinkHandler())
+	c.OnHTML("a[data-click-key=\"xdp_v1.xdp.click.syllabus_item_link\"]", s.syllabusItemLinkHandler(configRow))
 
-	if err := c.Visit(row.Link); err != nil {
+	if err := c.Visit(configRow.Link); err != nil {
 		return err
 	}
 	c.Wait()
@@ -74,7 +73,7 @@ func (s *CourseraStrategy) collector() *colly.Collector {
 	return collector
 }
 
-func (s *CourseraStrategy) syllabusItemLinkHandler() colly.HTMLCallback {
+func (s *CourseraStrategy) syllabusItemLinkHandler(configRow project.ConfigRow) colly.HTMLCallback {
 	return func(el *colly.HTMLElement) {
 		itemUrl := el.Attr("href")
 		splitUrl := strings.Split(itemUrl, "/")
@@ -115,7 +114,7 @@ func (s *CourseraStrategy) syllabusItemLinkHandler() colly.HTMLCallback {
 		}
 
 		// store founded data using storage.Storager
-		s.store(first.Name, el.Request.URL.String(), videos)
+		s.store(configRow.Scope, configRow.Profession, first.Name, el.Request.URL.String(), videos)
 
 		// open page to parse other video link
 		s.visitLink(el, itemUrl)
@@ -136,7 +135,13 @@ func (s *CourseraStrategy) visitLink(el *colly.HTMLElement, link string) {
 	}
 }
 
-func (s *CourseraStrategy) store(name string, url string, videos *coursera.OnDemandLectureVideos) {
+func (s *CourseraStrategy) store(
+	scope string,
+	profession string,
+	name string,
+	url string,
+	videos *coursera.OnDemandLectureVideos,
+) {
 	if s.options.storage == nil {
 		return
 	}
@@ -149,9 +154,11 @@ func (s *CourseraStrategy) store(name string, url string, videos *coursera.OnDem
 
 	if err := s.options.storage.Save(
 		storage.Entity{
-			Name:   name,
-			Link:   url,
-			Movies: videosByResolution.ToMap(),
+			Scope:      scope,
+			Profession: profession,
+			Title:      name,
+			Link:       url,
+			Movie:      videosByResolution.R720P.Mp4VideoURL,
 		}); err != nil {
 		s.log().WithError(err).Errorln("storage.Storager.Save")
 	}

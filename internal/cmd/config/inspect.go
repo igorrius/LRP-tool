@@ -1,4 +1,4 @@
-package parser
+package config
 
 import (
 	"github.com/choizydev/LRP-tool/internal/logger"
@@ -16,8 +16,8 @@ func Inspect() *cli.Command {
 
 			for _, configRow := range conf.Configurations().Normalized() {
 				log.FieldLogger().WithFields(map[string]interface{}{
-					"Types":          configRow.Types,
-					"Specialization": configRow.Specialization,
+					"Scope":          configRow.Scope,
+					"Profession": configRow.Profession,
 					"OriginSite":     configRow.OriginSite,
 					"Courses":        configRow.Courses,
 					"Subscription":   configRow.Subscription,

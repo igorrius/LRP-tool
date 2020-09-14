@@ -13,12 +13,12 @@ func normalizeConfigRow(r ConfigRow) (ConfigRow, error) {
 	}
 
 	return ConfigRow{
-		Types:          normalizeConfigType(r.Types),
-		Specialization: normalizeConfigSpecialization(r.Specialization),
-		OriginSite:     normalizeConfigOriginSite(r.OriginSite),
-		Courses:        normalizeConfigCourses(r.Courses),
-		Subscription:   normalizeConfigSubscription(r.Subscription),
-		Link:           normalizeConfigLink(r.Link),
+		Scope:        normalizeConfigScope(r.Scope),
+		Profession:   normalizeConfigProfession(r.Profession),
+		OriginSite:   normalizeConfigOriginSite(r.OriginSite),
+		Courses:      normalizeConfigCourses(r.Courses),
+		Subscription: normalizeConfigSubscription(r.Subscription),
+		Link:         normalizeConfigLink(r.Link),
 	}, nil
 }
 
@@ -34,12 +34,12 @@ func normalizeConfigCourses(s string) string {
 	return strings.ToLower(s)
 }
 
-func normalizeConfigSpecialization(s string) string {
-	return strings.ToLower(s)
+func normalizeConfigProfession(s string) string {
+	return s
 }
 
-func normalizeConfigType(s string) string {
-	return strings.ToLower(s)
+func normalizeConfigScope(s string) string {
+	return s
 }
 
 func normalizeConfigOriginSite(s string) string {

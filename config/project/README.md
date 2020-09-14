@@ -5,4 +5,11 @@ This folder contains project configurations in CSV format. These configurations 
 This project uses CSV files to manage the project configuration. These files should be in the next format
 (with the first line as column declaration) and using `comma` separation symbol:
 
-types,specialization,origin_site,courses,subscription,link
+scope,profession,origin_site,courses,subscription,link
+
+
+
+
+Scope - file name
+Specialization - professions (table)
+destination - steps (table)
