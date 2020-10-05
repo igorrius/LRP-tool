@@ -1,7 +1,6 @@
 package parser
 
 import (
-	"errors"
 	"github.com/choizydev/LRP-tool/internal/logger"
 	"github.com/choizydev/LRP-tool/internal/project"
 )
@@ -19,5 +18,6 @@ func (s *EdxStrategy) Name() string {
 }
 
 func (s *EdxStrategy) Run(project.ConfigRow) error {
-	return errors.New("has not been implemented yet")
+	//return errors.New("has not been implemented yet")
+	return nil
 }
