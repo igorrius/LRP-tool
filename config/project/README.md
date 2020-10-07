@@ -6,10 +6,3 @@ This project uses CSV files to manage the project configuration. These files sho
 (with the first line as column declaration) and using `comma` separation symbol:
 
 scope,profession,origin_site,courses,subscription,link
-
-
-
-
-Scope - file name
-Specialization - professions (table)
-destination - steps (table)
