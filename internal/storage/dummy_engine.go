@@ -2,7 +2,7 @@ package storage
 
 import (
 	"context"
-	"github.com/choizydev/LRP-tool/internal/logger"
+	"github.com/igorrius/LRP-tool/internal/logger"
 )
 
 type DummyEngine struct {

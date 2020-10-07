@@ -1,6 +1,6 @@
 package parser
 
-import "github.com/choizydev/LRP-tool/internal/storage"
+import "github.com/igorrius/LRP-tool/internal/storage"
 
 type Option func(options *options)
 

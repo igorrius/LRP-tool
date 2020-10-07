@@ -3,7 +3,7 @@ package storage
 import (
 	"context"
 	"errors"
-	"github.com/choizydev/LRP-tool/internal/logger"
+	"github.com/igorrius/LRP-tool/internal/logger"
 )
 
 var (

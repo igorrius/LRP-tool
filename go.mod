@@ -1,4 +1,4 @@
-module github.com/choizydev/LRP-tool
+module github.com/igorrius/LRP-tool
 
 go 1.15
 

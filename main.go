@@ -1,10 +1,9 @@
 package main
 
 import (
-	"github.com/choizydev/LRP-tool/internal/cmd"
-	"github.com/choizydev/LRP-tool/internal/cmd/flag"
-	"github.com/choizydev/LRP-tool/internal/logger"
-	"github.com/sirupsen/logrus"
+	"github.com/igorrius/LRP-tool/internal/cmd"
+	"github.com/igorrius/LRP-tool/internal/cmd/flag"
+	"github.com/igorrius/LRP-tool/internal/logger"
 	"github.com/urfave/cli/v2"
 	"os"
 )
@@ -31,10 +30,7 @@ func main() {
 		},
 	}
 
-	err := app.Run(os.Args)
-	if err != nil {
-		logrus.WithError(err).Fatal("Application start failed")
-	}
+	cli.HandleExitCoder(app.Run(os.Args))
 }
 
 func createLoggerOptions(ctx *cli.Context) []logger.Option {

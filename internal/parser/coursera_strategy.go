@@ -1,10 +1,10 @@
 package parser
 
 import (
-	"github.com/choizydev/LRP-tool/internal/logger"
-	"github.com/choizydev/LRP-tool/internal/parser/coursera"
-	"github.com/choizydev/LRP-tool/internal/project"
-	"github.com/choizydev/LRP-tool/internal/storage"
+	"github.com/igorrius/LRP-tool/internal/logger"
+	"github.com/igorrius/LRP-tool/internal/parser/coursera"
+	"github.com/igorrius/LRP-tool/internal/project"
+	"github.com/igorrius/LRP-tool/internal/storage"
 	"github.com/gocolly/colly/v2"
 	"github.com/gocolly/colly/v2/debug"
 	"github.com/sirupsen/logrus"

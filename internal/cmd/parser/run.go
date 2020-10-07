@@ -1,11 +1,11 @@
 package parser
 
 import (
-	"github.com/choizydev/LRP-tool/internal/cmd/flag"
-	"github.com/choizydev/LRP-tool/internal/logger"
-	"github.com/choizydev/LRP-tool/internal/parser"
-	"github.com/choizydev/LRP-tool/internal/project"
-	"github.com/choizydev/LRP-tool/internal/storage"
+	"github.com/igorrius/LRP-tool/internal/cmd/flag"
+	"github.com/igorrius/LRP-tool/internal/logger"
+	"github.com/igorrius/LRP-tool/internal/parser"
+	"github.com/igorrius/LRP-tool/internal/project"
+	"github.com/igorrius/LRP-tool/internal/storage"
 	"github.com/urfave/cli/v2"
 )
 
@@ -27,8 +27,8 @@ func Run() *cli.Command {
 			).Run(
 				//Parser options
 				parser.Async(false),
-				buildStorageOption(ctx),
 				parser.CacheDir("./.cache"),
+				buildStorageOption(ctx),
 			)
 		},
 	}

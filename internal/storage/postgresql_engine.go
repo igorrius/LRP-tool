@@ -4,7 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/choizydev/LRP-tool/internal/logger"
+	"github.com/igorrius/LRP-tool/internal/logger"
 	"github.com/jackc/pgx/v4"
 	"github.com/jackc/pgx/v4/log/logrusadapter"
 	"github.com/sirupsen/logrus"

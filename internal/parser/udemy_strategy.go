@@ -1,8 +1,8 @@
 package parser
 
 import (
-	"github.com/choizydev/LRP-tool/internal/logger"
-	"github.com/choizydev/LRP-tool/internal/project"
+	"github.com/igorrius/LRP-tool/internal/logger"
+	"github.com/igorrius/LRP-tool/internal/project"
 	"github.com/gocolly/colly/v2"
 	"github.com/gocolly/colly/v2/debug"
 	"github.com/sirupsen/logrus"

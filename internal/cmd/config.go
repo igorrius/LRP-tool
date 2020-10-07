@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"github.com/choizydev/LRP-tool/internal/cmd/config"
-	"github.com/choizydev/LRP-tool/internal/logger"
+	"github.com/igorrius/LRP-tool/internal/cmd/config"
+	"github.com/igorrius/LRP-tool/internal/logger"
 	"github.com/urfave/cli/v2"
 )
 

@@ -1,8 +1,8 @@
 package config
 
 import (
-	"github.com/choizydev/LRP-tool/internal/logger"
-	"github.com/choizydev/LRP-tool/internal/project"
+	"github.com/igorrius/LRP-tool/internal/logger"
+	"github.com/igorrius/LRP-tool/internal/project"
 	"github.com/urfave/cli/v2"
 )
 

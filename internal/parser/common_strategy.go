@@ -1,7 +1,7 @@
 package parser
 
 import (
-	"github.com/choizydev/LRP-tool/internal/logger"
+	"github.com/igorrius/LRP-tool/internal/logger"
 )
 
 type commonStrategy struct {

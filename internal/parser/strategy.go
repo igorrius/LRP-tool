@@ -2,8 +2,8 @@ package parser
 
 import (
 	"errors"
-	"github.com/choizydev/LRP-tool/internal/logger"
-	"github.com/choizydev/LRP-tool/internal/project"
+	"github.com/igorrius/LRP-tool/internal/logger"
+	"github.com/igorrius/LRP-tool/internal/project"
 )
 
 var ErrStrategyNotImplemented = errors.New("strategy has not been implemented yet")

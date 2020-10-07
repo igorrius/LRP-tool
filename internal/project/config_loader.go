@@ -2,7 +2,7 @@ package project
 
 import (
 	"encoding/csv"
-	"github.com/choizydev/LRP-tool/internal/logger"
+	"github.com/igorrius/LRP-tool/internal/logger"
 	"github.com/jszwec/csvutil"
 	"os"
 	"path/filepath"

@@ -1,7 +1,7 @@
 package project
 
 import (
-	"github.com/choizydev/LRP-tool/internal/logger"
+	"github.com/igorrius/LRP-tool/internal/logger"
 	"github.com/sirupsen/logrus"
 )
 
